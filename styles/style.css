@@ -1,0 +1,66 @@
+ 
+/* Reset the tags */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ body{
+    height: 100vh;
+    background-color: rgb(105, 105, 105);
+ }
+  
+ .panel, #panel-expense{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }
+  
+ #extern{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+  
+    background-color: rgb(16, 17, 16);
+    width: 10rem;
+    height: 10rem;
+ }
+  
+ #lamp{
+    border-radius: 50%;
+    background-color: gold;
+  
+    height: 5rem;
+    width: 5rem;
+ }
+  
+ .buttons{
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+ }
+  
+ #button-expense{
+    margin-top: 5rem;
+ }
+  
+ #button-expense a, #panel-expense a{
+    background-color:rgb(129, 238, 129);
+    padding: 10px 10px 10px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    color:red;
+    opacity: 0.9
+ }
+  
+ #button-expense a:hover{
+    background-color: rgb(105, 105, 105);
+    opacity: 1;
+ }
+ 
+ 
