@@ -1,5 +1,7 @@
 var awsIot = require('aws-iot-device-sdk');
 
+const express = require('express');
+const app = express();
 
 //
 // Replace the values of '<YourUniqueClientIdentifier>' and '<YourCustomEndpoint>'
@@ -33,9 +35,6 @@ device
   });
 
 
-const express = require('express');
-const app = express();
- 
 // Definidos as rotas das páginas estáticas
 app.use(express.static('styles'))
 app.use('/styles',express.static(__dirname + '/styles'))
@@ -45,5 +44,4 @@ app.get('',(req,res) => {
  res.sendFile(__dirname + '/index.html')
 })
 
-
-app.listen(process.env.port || 3000);
+app.listen(process.env.PORT || 3000);
