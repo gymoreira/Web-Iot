@@ -1,5 +1,6 @@
 var awsIot = require('aws-iot-device-sdk');
 
+
 //
 // Replace the values of '<YourUniqueClientIdentifier>' and '<YourCustomEndpoint>'
 // with a unique client identifier and custom host endpoint provided in AWS IoT.
