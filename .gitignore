@@ -3,3 +3,6 @@ node_modules
 .env
 
 tmp/*
+!tmp/01e7c0c317-private.pem.key
+!tmp/01e7c0c317-certificate.pem.crt
+!tmp/AmazonRootCA1.pem
