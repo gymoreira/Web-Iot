@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Lâmpada</title>
+</head>
+
+<body>
+    <div id='panel' class='panel'>
+        <h2 id='state-lamp'>Estado da lampada</h2>
+        <p> <%= text %> </p>
+       
+        <div id='extern'>
+            <div id='lamp'></div>
+        </div>
+        <div class='buttons'>
+            <div>   
+                <form action="/" method = "POST">
+                    <input type="text" name="" id="">
+                    <button id='On' type="submit" onclick="Status.on()">Ligar</button>
+                </form>
+            </div>
+            <div>
+                <button id='Off' onclick="Status.off()">Desligar</button>
+            </div>
+        </div>
+        <div id='button-expense'>
+            <a href="#panel-expense">Consumo mensal</a>
+        </div>  
+    </div>
+
+    <div class = 'panel' id='panel-expense'>
+        <a href="#panel">Início</a>
+    </div>
+
+    <div class ='panel' id= 'panel-scheduled'>
+        <h1>Agendamento da lâmpada</h1>
+
+       
+            <input type="time" name="hour" id="hour">
+            <button onClick="Data.printar()">Salvar</button>
+
+      
+   
+        <a href="#panel">Início</a>
+       
+    </div>
+
+    <script src="../scripts/script.js"></script>
+    
+   
+</body>
+
+</html>
