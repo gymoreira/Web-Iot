@@ -4,8 +4,6 @@ const express = require('express');
 const app = express();
 app.set('view engine', 'ejs')
 
-app.set('view engine', 'ejs')
-
 // Definindo as rotas estáticas 
 app.use('/', express.static('/'))
 app.use('/styles', express.static(__dirname + '/styles'))
@@ -20,7 +18,6 @@ app.get('/', (req, res) => {
 })
 
 app.listen(process.env.PORT || 3000); //Definido a porta padrão do servidor
-
 
 
 //
