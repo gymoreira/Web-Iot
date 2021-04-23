@@ -17,12 +17,12 @@
         <div id='extern'>
             <div id='lamp'></div>
         </div>
-        <div class='buttons'>
+        <div id='onoff' class='buttons'>
             <div>   
-                <form action="/" method = "POST">
+                <!--<form action="/" method = "POST">-->
                     <input type="text" name="" id="">
                     <button id='On' type="submit" onclick="Status.on()">Ligar</button>
-                </form>
+                <!--</form>-->
             </div>
             <div>
                 <button id='Off' onclick="Status.off()">Desligar</button>
@@ -34,6 +34,14 @@
     </div>
 
     <div class = 'panel' id='panel-expense'>
+        <caption><h1>Consumo mensal</h1></caption>
+         <table id="consumo" border="1" style="width:50%">            
+            <tr>
+              <th>Mês</th>
+              <th>Horas</th>
+              <th>Valor</th>
+            </tr>
+        </table><br><br>
         <a href="#panel">Início</a>
     </div>
 

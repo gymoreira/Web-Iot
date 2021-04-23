@@ -61,3 +61,16 @@ body{
    background-color: rgb(105, 105, 105);
    opacity: 1;
 }
+
+table {
+   border: 1px #c0c0c0 solid;
+   width: 100%;
+ }
+ table th {
+   background-color: #00f;
+   color: #fff;
+ }
+ table td {
+   background-color: #f0f0f0;
+   color: #0c0c0c;
+ }
