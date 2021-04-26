@@ -2,45 +2,73 @@ var horas = new Array();
 var mes = [0,0,0,0,0,0,0,0,0,0,0,0];
 var months = ["JANEIRO","FEVEREIRO","MARÇO","ABRIL","MAIO","JUNHO","JULHO","AGOSTO","SETEMBRO","OUTUBRO","NOVEMBRO ","DEZEMBRO"];
 
-
 const Status = {
-    //Liga a lampada e começa a contar o consumo
     on() {
-        ligarConsumo()
         console.log('Ligar')
-        document.getElementById('lamp').style.backgroundColor= 'yellow'
-        
+        document.getElementById('lamp').style.backgroundColor = 'yellow'
+        ligarConsumo()
     },
-    //Desliga a lampada e atualiza o consumo
     off() {
-        
         console.log('Desligar')
-        document.getElementById('lamp').style.backgroundColor= 'gray'
-        limpaTable();
-        desligarConsumo();
-
+        document.getElementById('lamp').style.backgroundColor = 'gray'
+        limpaTable()
+        desligarConsumo()
     }
 }
 
-//Obter os dados da hora
-const Data = {
-    date: document.querySelector('input#hour'),
-    getvalues(){
-            date: Data.date.value
-           
+setInterval(function () {
+    const stateLamp = document.getElementById('stateLamp').innerText
+    //console.log(color)
+
+    if (stateLamp === 'l') {
+        document.getElementById('lamp').style.backgroundColor = 'yellow'
+        
+    } else if (stateLamp === 'd') {
+        document.getElementById('lamp').style.backgroundColor = 'rgb(59, 59, 2)'
+        
+    }else{
+        document.getElementById('lamp').style.backgroundColor = 'gray'
+        
+    }
+},50)
+
+function delay(){
+    setTimeout(()=>{
+        location.reload()
+    }, 1000);
+}
+
+/*
+const bnt = document.getElementById('On');
+bnt.addEventListener('click', function(e){
+    e.preventDefault();
+    console.log('Ligar')
+    document.getElementById('lamp').style.backgroundColor= 'yellow'
+})
+*/
+
+// Mostrar ou retirar da tela a parte de programação
+const Schedule = {
+    open(){
+        document.querySelector('.schedule-program').classList.add('active')
+        console.log("SSSSS")
+       
     },
-    printar(){
-        console.log(typeof(Data.date.value))
+    close(){
+       document.querySelector('.schedule-program').classList.remove('active')
+        console.log("fechando")
     }
 }
 
+//Obter o dia da semana e a hora
+const botao =  document.getElementById('save')
 
-
-var state_lamp = 'on'
-const  day_week = 'segunda-feira'
-const data = '23'
-const hour = '10'
-const minute = '50'
+botao.addEventListener('click', (e)=>{
+    //const select = document.getElementById('input[type="radio"]:checked')
+    //console.log(select.value)
+   
+    console.log("sdsddasfd")
+})
 
 
 //ligarConsumo()//deixar essa linha comentada se o sistema vai assumir que ele inicia com a lampada apagada.
@@ -94,4 +122,4 @@ function limpaTable() {
     for (i = 0; i < 12; i++) {
     document.getElementById('consumo').deleteRow(1);
     }
-  }  
+  }

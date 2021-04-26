@@ -1,23 +1,25 @@
-/* Reset the tags */
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
-body{
+
+body {
    height: 100vh;
    background-color: rgb(105, 105, 105);
 }
 
-.panel{
+.panel {
    height: 100vh;
    display: flex;
    align-items: center;
    justify-content: center;
-   flex-direction: column; 
+   flex-direction: column;
 }
 
-#extern{
+
+/******************************************************************/
+#extern {
    margin-top: 1rem;
    display: flex;
    align-items: center;
@@ -29,37 +31,98 @@ body{
    height: 10rem;
 }
 
-#lamp{
+#lamp {
+   background-color: rgb(16, 17, 16);
    border-radius: 50%;
-   background-color: yellow;
-
    height: 5rem;
    width: 5rem;
 }
 
-.buttons{
+/******************************************************************/
+.buttons {
    width: 10rem;
    display: flex;
-   justify-content: space-between;
-   margin-top: 1rem;
+   justify-content: space-around;
+   margin-top: 2rem;
+}
+.buttons #on, 
+.buttons #off{
+   width: 5rem;
+   height: 2rem;
+  
+   border-radius: 0.5rem;
 }
 
-#button-expense{
+.buttons #on{
+   margin-right: 1rem;
+}
+
+.buttons #off{
+   margin-left: 1rem;
+}
+
+
+#button-expense {
    margin-top: 5rem;
 }
 
-#button-expense a, #panel-expense a{
-   background-color:rgb(16, 17, 16);
+#button-expense a,
+#panel-expense a,
+#new-program a {
+   background-color: rgb(16, 17, 16);
    padding: 10px 10px 10px 10px;
    border-radius: 20px;
    text-decoration: none;
-   color:red;
+   color: red;
    opacity: 0.9
 }
 
-#button-expense a:hover{
-   background-color: rgb(105, 105, 105);
+#button-expense a:hover {
+   background-color: rgb(39, 39, 39);
    opacity: 1;
+
+}
+
+#new-program{
+   margin-top: 4rem;
+}
+#bnt-new-program{
+   text-decoration: none;
+   color: black;
+   
+
+}
+.schedule-program {
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.7);
+
+   position: fixed;
+   top: 0;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   opacity: 0;
+   visibility: hidden;
+}
+
+.schedule-program.active {
+   opacity: 1;
+   visibility: visible;
+}
+
+.schedule {
+   background-color: rgb(105, 105, 105);
+   padding: 2.4rem;
+
+   position: relative;
+   z-index: 999;
+}
+
+schedule-buttons {
+   width: 10rem;
 }
 
 table {

@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <!--A cada 20 segundo a página é recarregada-->
+    <!--  <meta http-equiv="refresh" content="5" />-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
@@ -11,29 +13,27 @@
 
 <body>
     <div id='panel' class='panel'>
-        <h2 id='state-lamp'>Estado da lampada</h2>
-        <p> <%= text %> </p>
-       
+        <p id='stateESP'> Node MCU: <%= text %> </p>
+        <h2>Estado da lâmpada</h2>
+        <p id='stateLamp'><%= text2 %> </p>
         <div id='extern'>
             <div id='lamp'></div>
         </div>
-        <div id='onoff' class='buttons'>
-            <div>   
-                <!--<form action="/" method = "POST">-->
-                    <input type="text" name="" id="">
-                    <button id='On' type="submit" onclick="Status.on()">Ligar</button>
-                <!--</form>-->
-            </div>
-            <div>
-                <button id='Off' onclick="Status.off()">Desligar</button>
-            </div>
+        <div class='buttons'>
+            <form action="/on" method="POST">
+                <button id="on"onClick="Status.on()">Ligar</button>
+            </form>
+            <form action="/off" method="POST">
+                <button id='off' onclick=" Status.off()">Desligar</button>
+            </form>
         </div>
         <div id='button-expense'>
             <a href="#panel-expense">Consumo mensal</a>
-        </div>  
+        </div>
+        <div id='new-program'><a id='bnt-new-program'href="#" onclick="Schedule.open()">Nova programação</a></div>
     </div>
 
-    <div class = 'panel' id='panel-expense'>
+    <div class='panel' id='panel-expense'>
         <caption><h1>Consumo mensal</h1></caption>
          <table id="consumo" border="1" style="width:50%">            
             <tr>
@@ -45,22 +45,44 @@
         <a href="#panel">Início</a>
     </div>
 
-    <div class ='panel' id= 'panel-scheduled'>
-        <h1>Agendamento da lâmpada</h1>
+    <section>
+        <div class='schedule-program'>
+            <div class="schedule">
+                <form action="/" method="POST">
+                    <input type="radio" name="week" id="domingo" value="domingo" checked>
+                    <label for="domingo">Domingo</label>
 
-       
-            <input type="time" name="hour" id="hour">
-            <button onClick="Data.printar()">Salvar</button>
+                    <input type="radio" name="week" id="segunda" value="segunda-feira">
+                    <label for="segunda">Segunda</label>
 
-      
-   
-        <a href="#panel">Início</a>
-       
-    </div>
+                    <input type="radio" name="week" id="terca" value="terça-feira">
+                    <label for="terca">Terça</label>
 
+                    <input type="radio" name="week" id="quarta" value="quarta-feira">
+                    <label for="quarta">Quarta</label>
+
+                    <input type="radio" name="week" id="quinta" value="quinta-feira">
+                    <label for="quinta">Quinta</label>
+
+                    <input type="radio" name="week" id="sexta" value="sexta-feira">
+                    <label for="sexta">Sexta</label>
+
+                    <input type="radio" name="week" id="sabado" value="sabado">
+                    <label for="sabado">Sabado</label>
+
+                    
+                    <input type="time" name="hour" id="hour" required>
+                    <div id='schedule-buttons'>
+                        <a id='cancel' href="#" onclick="Schedule.close()">Cancelar</a>
+                        <button type="submit" id='save' >Salvar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
     <script src="../scripts/script.js"></script>
-    
-   
+
 </body>
 
 </html>
