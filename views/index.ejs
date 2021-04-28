@@ -11,9 +11,10 @@
     <title>Lâmpada</title>
 </head>
 
-<body>
+<body onload="initalState()">
     <div id='panel' class='panel'>
-        <p id='stateESP'> Node MCU: <%= text %> </p>
+        <h1>Node MCU: </h1>
+        <p id='stateESP'> <%= text %> </p>
         <h2>Estado da lâmpada</h2>
         <p id='stateLamp'><%= text2 %> </p>
         <div id='extern'>
@@ -21,16 +22,37 @@
         </div>
         <div class='buttons'>
             <form action="/on" method="POST">
-                <button id="on"onClick="Status.on()">Ligar</button>
+                <button id="on">Ligar</button>
             </form>
             <form action="/off" method="POST">
-                <button id='off' onclick=" Status.off()">Desligar</button>
+                <button id='off'>Desligar</button>
+            </form>
+        </div>
+        <div>
+            <form action="/timer" method="POST">
+                <h1 id='titleTimer'>Temporizador</h1>
+                <div id='SelectTimer'>
+                    <div>
+                        <input type="radio" name="timerSelect" id="setON" value="ligar"checked>
+                        <label for="setON">Ligar</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="timerSelect" id="setOFF" value="desligar">
+                        <label for="setOFF">Desligar</label>
+                    </div>
+                </div>
+
+                <div id='timer'>
+                    <input type="time" name="timer" id="timer" value="00:05" required>
+                    <p id='timerResult'> <%=  texto3 %> </p>
+                    <button id='initTimer' type="submit">Iniciar</button>
+                </div>
             </form>
         </div>
         <div id='button-expense'>
             <a href="#panel-expense">Consumo mensal</a>
         </div>
-        <div id='new-program'><a id='bnt-new-program'href="#" onclick="Schedule.open()">Nova programação</a></div>
+        <div id='new-program'><a id='bnt-new-program' href="#" onclick="Schedule.open()">Nova programação</a></div>
     </div>
 
     <div class='panel' id='panel-expense'>
@@ -38,50 +60,115 @@
          <table id="consumo" border="1" style="width:50%">            
             <tr>
               <th>Mês</th>
-              <th>Horas</th>
+              <th>Wh</th>
               <th>Valor</th>
             </tr>
+            <tr>
+                <td>JANEIRO</td>
+                <td><%= hr0 %></td>
+                <td><%= vl0 %></td>
+             </tr><tr>
+                <td>FEVEREIRO</td>
+                <td><%= hr1 %></td>
+                <td><%= vl1 %></td>
+             </tr><tr>
+                <td>MARÇO</td>
+                <td><%= hr2 %></td>
+                <td><%= vl2 %></td>
+             </tr><tr>
+                <td>ABRIL</td>
+                <td><%= hr3 %></td>
+                <td><%= vl3 %></td>
+             </tr><tr>
+                <td>MAIO</td>
+                <td><%= hr4 %></td>
+                <td><%= vl4 %></td>
+             </tr><tr>
+                <td>JUNHO</td>
+                <td><%= hr5 %></td>
+                <td><%= vl5 %></td>
+             </tr><tr>
+                <td>JULHO</td>
+                <td><%= hr6 %></td>
+                <td><%= vl6 %></td>
+             </tr><tr>
+                <td>AGOSTO</td>
+                <td><%= hr7 %></td>
+                <td><%= vl7 %></td>
+             </tr><tr>
+                <td>SETEMBRO</td>
+                <td><%= hr8 %></td>
+                <td><%= vl8 %></td>
+             </tr><tr>
+                <td>OUTUBRO</td>
+                <td><%= hr9 %></td>
+                <td><%= vl9 %></td>
+             </tr><tr>
+                <td>NOVEMBRO</td>
+                <td><%= hr10 %></td>
+                <td><%= vl10 %></td>
+             </tr><tr>
+                <td>DEZEMBRO</td>
+                <td><%= hr11 %></td>
+                <td><%= vl11 %></td>
+             </tr>
         </table><br><br>
         <a href="#panel">Início</a>
     </div>
 
     <section>
-        <div class='schedule-program'>
+        <div class='schedule-week'>
             <div class="schedule">
                 <form action="/" method="POST">
-                    <input type="radio" name="week" id="domingo" value="domingo" checked>
-                    <label for="domingo">Domingo</label>
+                    <div>
+                        <input type="radio" name="week" id="domingo" value="domingo" checked>
+                        <label for="domingo">Domingo</label>
+                    </div>
 
-                    <input type="radio" name="week" id="segunda" value="segunda-feira">
-                    <label for="segunda">Segunda</label>
+                    <div>
+                        <input type="radio" name="week" id="segunda" value="segunda">
+                        <label for="segunda">Segunda</label>
+                    </div>
 
-                    <input type="radio" name="week" id="terca" value="terça-feira">
-                    <label for="terca">Terça</label>
+                    <div>
+                        <input type="radio" name="week" id="terca" value="terça">
+                        <label for="terca">Terça</label>
+                    </div>
 
-                    <input type="radio" name="week" id="quarta" value="quarta-feira">
-                    <label for="quarta">Quarta</label>
+                    <div>
+                        <input type="radio" name="week" id="quarta" value="quarta">
+                        <label for="quarta">Quarta</label>
+                    </div>
 
-                    <input type="radio" name="week" id="quinta" value="quinta-feira">
-                    <label for="quinta">Quinta</label>
+                    <div>
+                        <input type="radio" name="week" id="quinta" value="quinta">
+                        <label for="quinta">Quinta</label>
+                    </div>
 
-                    <input type="radio" name="week" id="sexta" value="sexta-feira">
-                    <label for="sexta">Sexta</label>
+                    <div>
+                        <input type="radio" name="week" id="sexta" value="sexta">
+                        <label for="sexta">Sexta</label>
+                    </div>
 
-                    <input type="radio" name="week" id="sabado" value="sabado">
-                    <label for="sabado">Sabado</label>
-
-                    
-                    <input type="time" name="hour" id="hour" required>
+                    <div>
+                        <input type="radio" name="week" id="sabado" value="sabado">
+                        <label for="sabado">Sabado</label>
+                    </div>
+                    <div id='setHour'>
+                        <h1>Horário:&nbsp; &nbsp;</h1>
+                        <input type="time" value="12:00" name="hour" id="hour" required>
+                    </div>
                     <div id='schedule-buttons'>
                         <a id='cancel' href="#" onclick="Schedule.close()">Cancelar</a>
-                        <button type="submit" id='save' >Salvar</button>
+                        <button type="submit" id='save'>Salvar</button>
                     </div>
                 </form>
             </div>
-
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../scripts/script.js"></script>
+    
 
 </body>
 
