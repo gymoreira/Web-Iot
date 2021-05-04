@@ -139,7 +139,12 @@ function runProgram() {
   let brweek
   let brhour
   if (date.getUTCHours()<3){
-    brweek = date.getUTCDay() - 1;
+    if (date.getUTCDay()==0){
+      brweek = 6;
+    }
+    else{
+      brweek = date.getUTCDay() - 1;
+    }    
     if(date.getUTCHours()==2){
       brhour=23
     }
@@ -160,7 +165,6 @@ function runProgram() {
       let array = temp[i].hour.split(':'); //Retirar os ':' da hora e retora um array com as palavra separadas em cada posição
       if (brweek.toString() === temp[i].week) {
         console.log("oxe, porra")
-        console.log(brweek)
         if (brhour == parseInt(array[0]) && date.getMinutes() == parseInt(array[1])) {
           console.log("ta louco nao pq?")
           time = 60000
