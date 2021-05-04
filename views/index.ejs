@@ -3,11 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <!--A cada 20 segundo a página é recarregada-->
-    <!--  <meta http-equiv="refresh" content="5" />-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>Lâmpada</title>
 </head>
 
@@ -19,6 +18,8 @@
         <p id='stateLamp'><%= text2 %> </p>
         <div id='extern'>
             <div id='lamp'></div>
+            <div id='lamp1'></div>
+            <div id='lamp2'></div>
         </div>
         <div class='buttons'>
             <form action="/on" method="POST">
@@ -33,7 +34,7 @@
                 <h1 id='titleTimer'>Temporizador</h1>
                 <div id='SelectTimer'>
                     <div>
-                        <input type="radio" name="timerSelect" id="setON" value="ligar"checked>
+                        <input type="radio" name="timerSelect" id="setON" value="ligar" checked>
                         <label for="setON">Ligar</label>
                     </div>
                     <div>
@@ -43,75 +44,124 @@
                 </div>
 
                 <div id='timer'>
-                    <input type="time" name="timer" id="timer" value="00:05" required>
+                    <input type="time" name="timer" id="timer" value="00:00" required>
                     <p id='timerResult'> <%=  texto3 %> </p>
                     <button id='initTimer' type="submit">Iniciar</button>
                 </div>
             </form>
         </div>
+        <div id='new-program'><a id='bnt-new-program' href="#" onclick="Schedule.open()">Nova programação</a></div>
         <div id='button-expense'>
             <a href="#panel-expense">Consumo mensal</a>
         </div>
-        <div id='new-program'><a id='bnt-new-program' href="#" onclick="Schedule.open()">Nova programação</a></div>
     </div>
+    <div class="panel">
+        <div id='valuesTable'>
+            <table>
+                <caption>
+                    <h2>Programação</h2>
+                </caption>
+                <thead>
+                    <th>Id</th>
+                    <th>Semana</th>
+                    <th>Horário</th>
+                    <th>Comando</th>
+                </thead>
+                <tbody>
+                    <% for( let index = 0; index < showData.length; index++ ) { %>
+                    <tr>
+                        <td> <span> <%= index %> </span> </td>
+                        <td> <%= showData[index].week%> </td>
+                        <td> <%= showData[index].hour%></td>
+                        <td> <%= showData[index].action%></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
 
+        </div>
+        <div>
+            <form action="/delete" method="POST">
+                <div id='delete'>
+                    <p>Id</p>
+                    <input id="deleteInput" min="0" name="positionDelete" type="number" value="0">
+                    <button type="submit">Remover</button>
+                </div>
+                
+            </form>
+        </div>
+        <a id='buttonInicio' href="#panel">Início</a>
+    </div>
     <div class='panel' id='panel-expense'>
-        <caption><h1>Consumo mensal</h1></caption>
-         <table id="consumo" border="1" style="width:50%">            
+        <caption>
+            <h1>Consumo mensal</h1>
+        </caption>
+        <table id="consumo" border="1" style="width:50%">
             <tr>
-              <th>Mês</th>
-              <th>Wh</th>
-              <th>Valor</th>
+                <th>Mês</th>
+                <th>Wh</th>
+                <th>Valor</th>
             </tr>
             <tr>
                 <td>JANEIRO</td>
-                <td><%= hr0 %></td>
-                <td><%= vl0 %></td>
-             </tr><tr>
+                <td id='m0'><%= hr0 %></td>
+                <td id='v0'><%= vl0 %></td>
+            </tr>
+            <tr>
                 <td>FEVEREIRO</td>
-                <td><%= hr1 %></td>
-                <td><%= vl1 %></td>
-             </tr><tr>
+                <td id='m1'><%= hr1 %></td>
+                <td id='v1'><%= vl1 %></td>
+            </tr>
+            <tr>
                 <td>MARÇO</td>
-                <td><%= hr2 %></td>
-                <td><%= vl2 %></td>
-             </tr><tr>
+                <td id='m2'><%= hr2 %></td>
+                <td id='v2'><%= vl2 %></td>
+            </tr>
+            <tr>
                 <td>ABRIL</td>
-                <td><%= hr3 %></td>
-                <td><%= vl3 %></td>
-             </tr><tr>
+                <td id='m3'><%= hr3 %></td>
+                <td id='v3'><%= vl3 %></td>
+            </tr>
+            <tr>
                 <td>MAIO</td>
-                <td><%= hr4 %></td>
-                <td><%= vl4 %></td>
-             </tr><tr>
+                <td id='m4'><%= hr4 %></td>
+                <td id='v4'><%= vl4 %></td>
+            </tr>
+            <tr>
                 <td>JUNHO</td>
-                <td><%= hr5 %></td>
-                <td><%= vl5 %></td>
-             </tr><tr>
+                <td id='m5'><%= hr5 %></td>
+                <td id='v5'><%= vl5 %></td>
+            </tr>
+            <tr>
                 <td>JULHO</td>
-                <td><%= hr6 %></td>
-                <td><%= vl6 %></td>
-             </tr><tr>
+                <td id='m6'><%= hr6 %></td>
+                <td id='v6'><%= vl6 %></td>
+            </tr>
+            <tr>
                 <td>AGOSTO</td>
-                <td><%= hr7 %></td>
-                <td><%= vl7 %></td>
-             </tr><tr>
+                <td id='m7'><%= hr7 %></td>
+                <td id='v7'><%= vl7 %></td>
+            </tr>
+            <tr>
                 <td>SETEMBRO</td>
-                <td><%= hr8 %></td>
-                <td><%= vl8 %></td>
-             </tr><tr>
+                <td id='m8'><%= hr8 %></td>
+                <td id='v8'><%= vl8 %></td>
+            </tr>
+            <tr>
                 <td>OUTUBRO</td>
-                <td><%= hr9 %></td>
-                <td><%= vl9 %></td>
-             </tr><tr>
+                <td id='m9'><%= hr9 %></td>
+                <td id='v9'><%= vl9 %></td>
+            </tr>
+            <tr>
                 <td>NOVEMBRO</td>
-                <td><%= hr10 %></td>
-                <td><%= vl10 %></td>
-             </tr><tr>
+                <td id='m10'><%= hr10 %></td>
+                <td id='v10'><%= vl10 %></td>
+            </tr>
+            <tr>
                 <td>DEZEMBRO</td>
-                <td><%= hr11 %></td>
-                <td><%= vl11 %></td>
-             </tr>
+                <td id='m11'><%= hr11 %></td>
+                <td id='v11'><%= vl11 %></td>
+            </tr>
         </table><br><br>
         <a href="#panel">Início</a>
     </div>
@@ -121,42 +171,50 @@
             <div class="schedule">
                 <form action="/" method="POST">
                     <div>
-                        <input type="radio" name="week" id="domingo" value="domingo" checked>
+                        <input type="radio" name="week" id="Domingo" value="0" checked>
                         <label for="domingo">Domingo</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="week" id="segunda" value="segunda">
+                        <input type="radio" name="week" id="segunda" value="1">
                         <label for="segunda">Segunda</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="week" id="terca" value="terça">
+                        <input type="radio" name="week" id="terca" value=2>
                         <label for="terca">Terça</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="week" id="quarta" value="quarta">
+                        <input type="radio" name="week" id="quarta" value="3">
                         <label for="quarta">Quarta</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="week" id="quinta" value="quinta">
+                        <input type="radio" name="week" id="quinta" value="4">
                         <label for="quinta">Quinta</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="week" id="sexta" value="sexta">
+                        <input type="radio" name="week" id="sexta" value="5">
                         <label for="sexta">Sexta</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="week" id="sabado" value="sabado">
-                        <label for="sabado">Sabado</label>
+                        <input type="radio" name="week" id="sabado" value="6">
+                        <label for="sabado">Sábado</label>
                     </div>
+
                     <div id='setHour'>
                         <h1>Horário:&nbsp; &nbsp;</h1>
                         <input type="time" value="12:00" name="hour" id="hour" required>
+                    </div>
+                    <div id='action'>
+                        <input type="radio" name="selectState" id="selectStateOn" value="1" checked>
+                        <label for="selectState">Ligar</label>
+
+                        <input type="radio" name="selectState" id="selectStateOff" value="0">
+                        <label for="selectState">Desligar</label>
                     </div>
                     <div id='schedule-buttons'>
                         <a id='cancel' href="#" onclick="Schedule.close()">Cancelar</a>
@@ -166,9 +224,8 @@
             </div>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../scripts/script.js"></script>
-    
+
 
 </body>
 

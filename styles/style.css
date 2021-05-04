@@ -7,7 +7,7 @@
 
 body {
    height: 100vh;
-   background-color: rgb(105, 105, 105);
+   background-color: rgba(66, 65, 65, 0.87);
 }
 
 .panel {
@@ -18,26 +18,62 @@ body {
    flex-direction: column;
 }
 
+#stateLamp {
+   opacity: 0;
+   
+}
 
 /******************************************************************/
 #extern {
+   position: relative;
    margin-top: 1rem;
    display: flex;
    align-items: center;
    justify-content: center;
    border-radius: 1rem;
 
-   background-color: rgb(16, 17, 16);
+   background-color: black;
    width: 10rem;
    height: 10rem;
+
+   transform: rotate(180deg);
 }
 
 #lamp {
+   position: absolute;
    background-color: rgb(16, 17, 16);
-   border-radius: 50%;
+   border-radius: 100% 112% 100% 29%;
+   transform: rotate(-45deg);
+
    height: 5rem;
    width: 5rem;
 }
+
+#lamp1 {
+   position: absolute;
+   width: 1.8rem;
+   height: 1.7rem;
+   background: grey;
+
+   border-radius: 20%;
+   box-sizing: border-box;
+   bottom: 0.8rem;
+   
+  
+}
+
+#lamp2{
+   position: absolute;
+   width: 1.5rem;
+   height: 0.9rem;
+   background: #383838;
+  
+
+   box-sizing: border-box;
+   bottom: 0;
+   
+}
+
 
 /******************************************************************/
 .buttons {
@@ -46,37 +82,44 @@ body {
    justify-content: space-around;
    margin-top: 2rem;
 }
-.buttons #on, 
-.buttons #off{
+
+.buttons #on,
+.buttons #off {
    width: 5rem;
    height: 2rem;
-  
+
    border-radius: 0.5rem;
 }
 
-.buttons #on{
+.buttons #on {
    margin-right: 1rem;
 }
 
-.buttons #off{
+.buttons #off {
    margin-left: 1rem;
 }
 
-#titleTimer{
+#titleTimer {
    margin-top: 1rem;
 }
 
-#timer{
- display: flex;
- justify-content: space-between;
- align-items: center;
+#timer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
-#timer p{
+#timer p {
    background-color: cornsilk;
    width: 3rem;
 }
-#SelectTimer{
+
+#timerResult {
+   text-align: right;
+   padding-right: 0.1rem;
+}
+
+#SelectTimer {
    margin: 1rem auto 1rem auto;
 
    display: flex;
@@ -84,15 +127,14 @@ body {
    align-items: center;
 }
 
-
-
 #button-expense {
    margin-top: 3rem;
 }
 
 #button-expense a,
 #panel-expense a,
-#new-program a {
+#new-program a, 
+a {
    background-color: rgb(16, 17, 16);
    padding: 10px 10px 10px 10px;
    border-radius: 20px;
@@ -100,22 +142,26 @@ body {
    color: red;
    opacity: 0.9
 }
-
+#buttonInicio{
+   margin-top: 1rem;
+}
 #button-expense a:hover {
    background-color: rgb(39, 39, 39);
    opacity: 1;
 
 }
 
-#new-program{
+#new-program {
    margin-top: 2.5rem;
 }
-#bnt-new-program{
+
+#bnt-new-program {
    text-decoration: none;
    color: black;
-   
+
 
 }
+
 .schedule-week {
    width: 100%;
    height: 100%;
@@ -144,7 +190,8 @@ body {
    position: relative;
    z-index: 999;
 }
-#setHour{
+
+#setHour {
    margin-top: 1rem;
    display: flex;
 }
@@ -155,15 +202,59 @@ body {
    justify-content: space-between;
 }
 
+#valuesTable{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 10rem;
+}
+
+#valuesTable caption h2{
+   padding-bottom: 1rem;
+}
+#deleteInput{
+   width: 2.5rem;
+   text-align: right;
+}
+
+#delete{
+   width: 8rem;
+   display: flex;
+   justify-content: space-between;
+   margin-top: 1rem;
+}
+
+/*Código da tabela*/
 table {
-   border: 1px #c0c0c0 solid;
-   width: 100%;
- }
- table th {
-   background-color: #00f;
-   color: #fff;
- }
- table td {
-   background-color: #f0f0f0;
-   color: #0c0c0c;
- }
+  border: 1px #c0c0c0 solid;
+  width: 100%;
+}
+table th {
+  background-color: #00f;
+  color: #fff;
+}
+table td {
+  background-color: #f0f0f0;
+  color: #0c0c0c;
+}
+
+@media (max-width: 300px){
+   html{
+       font-size: 80%;
+       
+   }
+   #extern{
+       width: 9rem;
+       height: 9rem;
+   }
+
+   #lamp {
+       height: 4.5rem;
+       width: 4.5rem;
+   }
+   
+   #lamp1 {
+       bottom: 0.9rem;   
+   }
+   
+}
