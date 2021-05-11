@@ -5,21 +5,18 @@ function initalState() {
     if (stateESP !== 'Online') {
         document.getElementById('on').disabled = true;
         document.getElementById('off').disabled = true;
-        document.getElementById('initTimer').disabled = true;
+      
     } else {
         document.getElementById('on').disabled = false;
         document.getElementById('off').disabled = false;
-        document.getElementById('initTimer').disabled = false;
-
     }
 }
 
-function updateValues() {
 
+
+function updateValues() {
     let date = new Date(new Date().getTime() - 180 * 60 * 1000);
     const stateLamp = document.getElementById('stateLamp').innerText
-    const disabledButtonTimer = document.getElementById('timerResult').innerText
-
     const colorLamp = document.getElementById('lamp')
     const baseLamp = document.getElementById('lamp1')
 
@@ -29,11 +26,6 @@ function updateValues() {
     $('#timerResult').load(window.location.href + " " + '#timerResult')
     $(`#mes${date.getMonth()}`).load(window.location.href + " " + `#mes${date.getMonth()}`)
     $(`#mes${date.getMonth()}value`).load(window.location.href + " " + `#mes${date.getMonth()}value`)
-
-    if (disabledButtonTimer === '0') {
-        document.getElementById('initTimer').disabled = false
-    } else document.getElementById('initTimer').disabled = true
-
 
     if (stateLamp === 'l') {
         colorLamp.style.backgroundColor = '#EBCE2A'
@@ -49,6 +41,8 @@ function updateValues() {
     loop = setTimeout(updateValues, 50)
 }
 
+
+
 // Mostrar ou retirar da tela a parte de programação ao clicar no botão
 const Schedule = {
     open() {
@@ -58,6 +52,16 @@ const Schedule = {
         document.querySelector('.schedule-week').classList.remove('active')
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 // Chamadas da função 
 updateValues();

@@ -5,10 +5,12 @@
    box-sizing: border-box;
 }
 
+
 body {
    height: 100vh;
    background-color: rgba(66, 65, 65, 0.87);
 }
+
 
 .panel {
    height: 100vh;
@@ -202,6 +204,11 @@ a {
    justify-content: space-between;
 }
 
+
+
+
+
+
 #valuesTable{
    display: flex;
    justify-content: center;
@@ -224,7 +231,11 @@ a {
    margin-top: 1rem;
 }
 
+
+
+
 /*Código da tabela*/
+
 table {
   border: 1px #c0c0c0 solid;
   width: 100%;
@@ -256,5 +267,6 @@ table td {
    #lamp1 {
        bottom: 0.9rem;   
    }
-   
+  
+ 
 }
